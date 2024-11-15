@@ -1,0 +1,15 @@
+.main{
+    justify-content: left;
+    display: flex;
+    justify-content: flex-start; 
+    align-items: flex-start; 
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 8px;
+}
+.main-content{
+    width: 100%;
+    margin-left: 12px;
+    margin-right: 12px;
+}

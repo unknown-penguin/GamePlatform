@@ -1,0 +1,27 @@
+<div class="main-container">
+    <div id="page-header">
+        <button mat-button id="return-button">
+            <mat-icon>arrow_back</mat-icon>
+            Return
+        </button>
+        <mat-form-field id="search-container" appearance="fill">
+            <mat-label>Search</mat-label>
+            <input matInput>
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+        <button mat-raised-button color="primary" id="new-game-button">
+            New Game
+        </button>
+    </div>
+    <div id="main-content">
+        <mat-list>
+            <mat-list-item *ngFor="let room of gameRooms">
+                <h3 matLine>{{ room.name }}</h3>
+                <p matLine>Players: {{ room.players }}</p>
+            </mat-list-item>
+        </mat-list>
+        <div *ngIf="errorMessage" class="error-message">
+            {{ errorMessage }}
+        </div>
+    </div>
+</div>

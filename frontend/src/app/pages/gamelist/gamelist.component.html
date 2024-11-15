@@ -1,0 +1,12 @@
+<div class="main-container">
+    <div class="main-content">
+      <app-gamecard 
+        *ngFor="let game of games" 
+        [game]="game">
+      </app-gamecard>
+    </div>
+    <div>
+      <button (click)="AddGame()">
+      </button>
+    </div>
+  </div>

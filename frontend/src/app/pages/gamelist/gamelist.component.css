@@ -1,0 +1,24 @@
+.main-container {
+    width: 100%;
+    margin-top: 10px;
+    height: 100vh;
+    position: relative;
+    border: solid #2A3036;
+    border-radius: 25px;
+    padding: 10px;
+    float: left;
+    display: flex;
+    justify-content: center; 
+  
+  }
+  .main-content {
+    display: flex;
+    flex-direction: row; 
+    gap: 20px; 
+  }
+  
+  
+  app-gamecard {
+    flex: 1 1 30%;
+    max-width: 300px;
+  }

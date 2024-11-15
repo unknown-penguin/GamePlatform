@@ -1,0 +1,16 @@
+.gamecard-container{
+    margin: 20px;
+    height: 100px;
+    width: 200px;
+    border: solid #2A3036;
+    border-radius: 27px;
+    transition: background-color 0.3s ease; 
+    opacity: 1; 
+}
+.gamecard-container:hover {
+    background-color: #1B1F23; 
+}
+.img-container{
+    position: relative;
+    display: inline-block;
+}

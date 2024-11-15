@@ -1,0 +1,64 @@
+.sidenav-container {
+    margin-top: 10px;
+    height: 100vh;
+    position: relative;
+    border: solid #2A3036;
+    border-radius: 25px;
+    padding: 10px;
+    float: left;
+    
+  }
+  
+  .sidenav {
+    width: 250px;
+    background-color: #1B1F23;
+    color: rgb(255, 255, 255);
+    border: none;
+  }
+  
+  .sidebar-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10px;
+  }
+  
+  .toggle-button {
+    top: 10px;
+    background-color: #2A3036;
+    border-radius: 50%;
+    color: white;
+    z-index: 1; 
+    transition: right 0.3s ease-in-out;
+  
+    &.ng-animating { 
+      transition: right 0.3s ease-in-out;
+    }
+  
+    .mat-drawer-opened + .toggle-button {
+      right: -30px;
+    }
+  
+    .mat-drawer-closed + .toggle-button {
+      right: -60px;
+    }
+  }
+  
+  .sidebar-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+  }
+  
+  .sidebar-content li {
+    margin: 15px 0;
+  }
+  
+  .content {
+    padding: 20px;
+  }
+  
+  mat-icon {
+    color: white;
+  }
+  

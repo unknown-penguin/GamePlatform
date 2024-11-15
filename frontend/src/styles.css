@@ -1,0 +1,12 @@
+body{
+    background-color: #1B1F23;
+    justify-content: left;
+    margin: 12px;
+}
+a{
+    text-decoration: none;
+    color: #ffffff;
+}
+.content{
+    width: 100%;
+}

@@ -1,0 +1,18 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="side" [(opened)]="isPanelOpen" class="sidenav">
+    <div class="sidebar-content">
+      <ul>
+        <mat-icon class="user-icon">person</mat-icon>
+        <li><a href="https://www.google.com">Activity</a></li>
+        <li>Tasks</li>
+        <li>Overview</li>
+        <li>Dashboard</li>
+      </ul>
+    </div>
+  </mat-sidenav>
+  <button mat-icon-button (click)="togglePanel()" class="toggle-button">
+    <mat-icon>{{ isPanelOpen ? 'chevron_left' : 'menu' }}</mat-icon>
+  </button>
+
+
+</mat-sidenav-container>

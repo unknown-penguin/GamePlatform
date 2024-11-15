@@ -1,0 +1,17 @@
+<div class="gamecard-container">
+    <div class="gamecard-content">
+        <div class="img-container">
+            <a [routerLink]="['/game/rooms', game.name]">
+                <img style="border-radius: 24px; opacity: 0.5" src="{{ game.image }}" width="200" height="100"
+                    alt="Image description">
+                <span style="  position: absolute;
+        top: 50%;  /* Adjust the vertical position */
+        left: 50%; /* Adjust the horizontal position */
+        transform: translate(-50%, -50%); /* Center the text */
+        color: white; /* Change the text color */
+        font-size: 12px; /* Adjust the font size */
+        font-weight: bold;"> {{ game.name }}</span>
+            </a>
+        </div>
+    </div>
+</div>

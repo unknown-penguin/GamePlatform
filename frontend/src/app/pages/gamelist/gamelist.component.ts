@@ -24,7 +24,7 @@ export class GamelistComponent implements OnInit {
     this.gameService.fetchGames()
     .pipe(
       catchError(error => {
-        this.errorMessage = 'Failed to load game rooms';
+        this.errorMessage = 'Failed to load games';
         return of([]);
       })
     )
@@ -47,9 +47,6 @@ export class GamelistComponent implements OnInit {
           return of(null);
         })
       ));
-      // if (result) {
-      //   this.games.push(result);
-      // }
     } catch (error) {
       this.errorMessage = 'Failed to add game';
     }

@@ -4,13 +4,13 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 @Component({
-  selector: 'app-main-header',
+  selector: 'app-sidebar',
   standalone: true,
   imports: [MatButtonModule, MatSidenavModule, MatToolbarModule, MatIconModule],
-  templateUrl: './main-header.component.html',
-  styleUrl: './main-header.component.css'
+  templateUrl: './sidebar.component.html',
+  styleUrl: './sidebar.component.css'
 })
-export class MainHeaderComponent {
+export class SidebarComponent {
   isPanelOpen = true;
 
   togglePanel() {

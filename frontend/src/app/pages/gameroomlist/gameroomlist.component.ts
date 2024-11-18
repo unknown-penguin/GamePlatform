@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { GameRoomService, GameRoom } from '../../../services/game-room.service';
@@ -17,23 +17,28 @@ import { MatListModule } from '@angular/material/list';
   styleUrls: ['./gameroomlist.component.css']
 })
 export class GameroomlistComponent implements OnInit {
+  gameId!: number;
   gameRooms: GameRoom[] = [];
   errorMessage: string | null = null;
 
-  constructor(private gameRoomService: GameRoomService) {}
+  constructor(
+    private gameRoomService: GameRoomService) {}
 
   ngOnInit() {
+    const url = window.location.href;
+    this.gameId = parseInt(url.split('/').pop() || '0', 10);
     this.fetchGameRooms();
   }
 
   fetchGameRooms() {
-    this.gameRoomService.fetchGameRooms()
+    console.log('Fetching game rooms for game', this.gameId);
+    this.gameRoomService.getGamesRooms(this.gameId)
       .pipe(
-        catchError(error => {
+        catchError(() => {
           this.errorMessage = 'Failed to load game rooms';
-          return of([]);
+          return of<GameRoom[]>([]);
         })
       )
-      .subscribe(rooms => this.gameRooms = rooms);
+      .subscribe((rooms: GameRoom[]) => this.gameRooms = rooms);
   }
 }

@@ -7,14 +7,14 @@ ENV ASPNETCORE_URLS=http://+:5031
 # Use the SDK image to build the application
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["game-service.csproj", "."]
-RUN dotnet restore "game-service.csproj"
-COPY . .
-WORKDIR "/src"
-RUN dotnet build "game-service.csproj" -c Release -o /app/build
+COPY backend/game-service/game-service.csproj backend/game-service/
+RUN dotnet restore backend/game-service/game-service.csproj
+COPY backend/game-service/ backend/game-service/
+WORKDIR /src/backend/game-service
+RUN dotnet build game-service.csproj -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "game-service.csproj" -c Release -o /app/publish
+RUN dotnet publish game-service.csproj -c Release -o /app/publish
 
 # Use the base image to run the application
 FROM base AS final

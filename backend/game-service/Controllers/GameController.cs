@@ -7,7 +7,7 @@ namespace game_service.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-[EnableCors("AllowAll")]
+[EnableCors("AllowLocalhost")]
 public class GameController : ControllerBase
 {
     private readonly GameDbContext _gameDbContext;
@@ -38,6 +38,7 @@ public class GameController : ControllerBase
     }
 
     [HttpPost]
+    
     public ActionResult<Game> Create(Game game)
     {
         _gameDbContext.Games.Add(game);

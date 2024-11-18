@@ -4,7 +4,13 @@ using game_room_service.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("GameServiceDbContext");
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalhost",
+        policy => policy.WithOrigins("http://localhost:4200")
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+});
 builder.Services.AddDbContext<GameRoomDbContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("GameServiceDbContext"));
@@ -22,7 +28,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors("AllowLocalhost");
 app.UseAuthorization();
 
 app.MapControllers();

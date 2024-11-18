@@ -1,24 +1,31 @@
-.main-container {
-    width: 100%;
-    margin-top: 10px;
-    height: 100vh;
-    position: relative;
-    border: solid #2A3036;
-    border-radius: 25px;
-    padding: 10px;
-    float: left;
-    display: flex;
-    justify-content: center; 
+.page-container {
+  min-width: 500px;
+  width: 100%;
+  margin-top: 10px;
+  height: 100vh;
+  position: relative;
+  background-color: #2A3036;
+  border: solid #2A3036;
+  border-radius: 25px;
+  padding: 10px;
+  float: left;
+  display: flex;
+  justify-content: center; 
   
-  }
-  .main-content {
-    display: flex;
-    flex-direction: row; 
-    gap: 20px; 
-  }
-  
-  
-  app-gamecard {
-    flex: 1 1 30%;
-    max-width: 300px;
-  }
+
+}
+.page-content {
+  max-width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  height: 10vh;
+
+}
+
+app-gamecard {
+  flex: 0 1 200px; 
+  max-width: 200px;
+  max-height: 100px;  
+}

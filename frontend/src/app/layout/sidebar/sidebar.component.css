@@ -2,6 +2,7 @@
     margin-top: 10px;
     height: 100vh;
     position: relative;
+    background-color: #2A3036;
     border: solid #2A3036;
     border-radius: 25px;
     padding: 10px;
@@ -11,7 +12,6 @@
   
   .sidenav {
     width: 250px;
-    background-color: #1B1F23;
     color: rgb(255, 255, 255);
     border: none;
   }

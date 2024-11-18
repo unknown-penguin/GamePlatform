@@ -1,13 +1,24 @@
-.main-container {
+.page-container {
+  min-width: 500px;
   width: 100%;
   margin-top: 10px;
   height: 100vh;
   position: relative;
+  background-color: #2A3036;
   border: solid #2A3036;
   border-radius: 25px;
   padding: 10px;
+  float: left;
   display: flex;
-  flex-direction: column;
+  justify-content: center; 
+}
+.page-content {
+  max-width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  height: 10vh;
 
 }
 
@@ -50,7 +61,7 @@
   margin-left: 10px;
 }
 
-#main-content {
+#list-content {
   flex-grow: 1;
   overflow-y: auto;
 }
@@ -99,6 +110,9 @@ li:hover {
 }
 
 mat-list-item {
+  flex: 0 1 200px;
+  
+  max-height: 100px;
   padding: 15px;
   margin-bottom: 15px;
   border: solid #2A3036;

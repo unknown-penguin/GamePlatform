@@ -19,6 +19,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Configure Kestrel to listen on both HTTP and HTTPS
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(5049); // HTTP
+    options.ListenAnyIP(7168, listenOptions => listenOptions.UseHttps("/app/certificate.pfx", "365281")); // HTTPS
+});
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -27,10 +34,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// Redirect HTTP to HTTPS in production environment if necessary
+if (app.Environment.IsProduction())
+{
+    app.UseHttpsRedirection();
+}
+
 app.UseCors("AllowLocalhost");
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();

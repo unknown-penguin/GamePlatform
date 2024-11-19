@@ -48,10 +48,7 @@ p {
 main {
     width: 100%;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    display: block;
     padding: 8px;
     box-sizing: border-box;
     position: relative;
@@ -166,7 +163,7 @@ main {
     display: flex;
     flex-direction: row;
     gap: 20px;
-    height: 10vh;
+    width: 100%;
 }
 
 .router-content {

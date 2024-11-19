@@ -17,7 +17,7 @@ export class GameService {
   constructor(private http: HttpClient) {}
 
   public fetchGames(): Observable<Game[]> {
-    return this.http.get<Game[]>('http://46.173.140.22:5031/game').pipe(
+    return this.http.get<Game[]>('https://localhost/game').pipe(
       catchError(error => {
         console.error('Error fetching games:', error);
         return of([]); 
@@ -26,7 +26,7 @@ export class GameService {
   }
 
   public AddGame(game: Game): Observable<Game | null> {
-    return this.http.post<Game>('http://46.173.140.22:5031/game', game).pipe(
+    return this.http.post<Game>('https://localhost/game', game).pipe(
       catchError(error => {
         console.error('Error adding game:', error);
         return of(null);

@@ -1,8 +1,11 @@
 # Use the official .NET image as a parent image
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
-EXPOSE 5049
-ENV ASPNETCORE_URLS=http://+:5049   
+EXPOSE 5049 7168
+ENV ASPNETCORE_URLS=http://+:5049;https://+:7168   
+
+# Copy the certificate from the root directory
+COPY ../../certificate.pfx /app/certificate.pfx
 
 # Use the SDK image to build the application
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
@@ -20,4 +23,9 @@ RUN dotnet publish game-room-service.csproj -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+
+# Ensure the certificate is available with correct permissions
+RUN chmod 644 /app/certificate.pfx
+
+# Entry point to run the application
 ENTRYPOINT ["dotnet", "game-room-service.dll"]

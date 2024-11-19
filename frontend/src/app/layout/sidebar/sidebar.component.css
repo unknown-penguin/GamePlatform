@@ -1,6 +1,6 @@
 .sidenav-container {
     margin-top: 10px;
-    height: 100vh;
+    height: calc(100% - 10px);
     position: relative;
     background-color: #2A3036;
     border: solid #2A3036;

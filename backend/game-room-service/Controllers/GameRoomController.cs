@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using game_room_service.Models;
+using Microsoft.AspNetCore.Cors;
 namespace game_room_service.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+[EnableCors("AllowSpecificOrigin")]
 public class GameRoomController : ControllerBase
 {
     private readonly GameRoomDbContext _context;
@@ -21,6 +23,17 @@ public class GameRoomController : ControllerBase
     public async Task<ActionResult<GameRoom>> GetGameRoom(int id)
     {
         var gameRoom = await _context.GameRooms.FindAsync(id);
+        if (gameRoom == null)
+        {
+            return NotFound();
+        }
+        return gameRoom;
+    }
+    [HttpGet("gamerooms/{gameId}")]
+    public async Task<ActionResult<IEnumerable<GameRoom>>> GetGameRoomByGameId(int gameId)
+    {
+        Console.WriteLine(gameId);
+        var gameRoom = await _context.GameRooms.Where(g => g.GameId == gameId).ToListAsync();
         if (gameRoom == null)
         {
             return NotFound();

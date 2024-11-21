@@ -1,3 +1,4 @@
+
 .page-container {
   min-width: 500px;
   width: 100%;
@@ -25,12 +26,15 @@
 #search-container {
   display: flex;
   align-items: center;
-  border: solid #2A3036;
-  border-radius: 25px;
-  padding: 5px 10px;
+  border: none; /* Remove any unnecessary borders */
+  overflow: visible;
+ 
   width: 250px;
 }
-
+#search-label {
+  color: #ffffff;
+  margin-top: 5px;
+}
 #search-container mat-icon {
   margin-left: auto;
   color: #2A3036;

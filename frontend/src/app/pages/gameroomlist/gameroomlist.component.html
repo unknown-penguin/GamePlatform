@@ -1,16 +1,18 @@
 <div class="page-container">
     <div class="page-content">
         <div id="page-header">
-            <button mat-button id="return-button">
+            <button mat-button (click)="ReturnToPreviousPage()" id="return-button">
                 <mat-icon>arrow_back</mat-icon>
                 Return
             </button>
-            <mat-form-field id="search-container" appearance="fill">
-                <mat-label>Search</mat-label>
+            <div style="height: 100px;">
+            <mat-form-field id="search-container" >
+                <mat-label id="search-label">Search</mat-label>
                 <input matInput>
                 <mat-icon matSuffix>search</mat-icon>
             </mat-form-field>
-            <button mat-raised-button color="primary" id="new-game-button">
+        </div>
+            <button (click)="AddNewGameRoom()" mat-raised-button color="primary" id="new-game-button">
                 New Game
             </button>
         </div>

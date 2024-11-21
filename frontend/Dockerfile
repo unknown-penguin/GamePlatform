@@ -19,7 +19,7 @@ RUN npm cache clean --force && npm install --loglevel verbose
 COPY . .
 
 # Build the Angular application
-RUN npm run build --configuration "frontend"
+RUN npm run build --configuration=production
 
 # Use the official Nginx image to serve the application
 FROM nginx:latest

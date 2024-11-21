@@ -1,8 +1,7 @@
 import { Component, Input} from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { Game } from '../../services/game.service';
+import { Game } from '../models/Game';
 import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-gamecard',
   standalone: true,
@@ -13,10 +12,10 @@ import { Router } from '@angular/router';
 export class GamecardComponent {
   @Input() game!: Game;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router ) {}
 
   navigateToGameRoom() {
-    this.router.navigate([`/game/rooms/${this.game.id}`]);
+    this.router.navigate([`/game/rooms`, this.game.name]);
   }
   
 }

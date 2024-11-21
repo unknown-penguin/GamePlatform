@@ -1,0 +1,17 @@
+<div class="new-game-room-container">
+    <h2>Create New Game Room</h2>
+    <form (ngSubmit)="createGameRoom()" #gameRoomForm="ngForm">
+        <mat-form-field appearance="fill">
+            <mat-label>Room Name</mat-label>
+            <input matInput [(ngModel)]="gameRoom.name" name="name" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Number of Players</mat-label>
+            <input matInput type="number" [(ngModel)]="gameRoom.players" name="players" required>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!gameRoomForm.form.valid">Create Room</button>
+    </form>
+    <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+    </div>
+</div>

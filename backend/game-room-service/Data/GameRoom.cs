@@ -10,12 +10,15 @@ public class GameRoom
     public string Image { get; set; }
     public int GameId { get; set; }
 
-    public GameRoom(int id, string name, int maxPlayers, bool isPrivate, string password)
+    public GameRoom(int id, string name, int maxPlayers, bool isPrivate, string password, string description, string image, int gameId)
     {
         Id = id;
         Name = name;
         MaxPlayers = maxPlayers;
         IsPrivate = isPrivate;
         Password = password;
+        Description = description;
+        Image = image;
+        GameId = gameId;
     }
 }

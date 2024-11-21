@@ -7,7 +7,7 @@ namespace game_service.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-[EnableCors("AllowLocalhost")]
+[EnableCors("AllowSpecificOrigin")]
 public class GameController : ControllerBase
 {
     private readonly GameDbContext _gameDbContext;
@@ -30,6 +30,18 @@ public class GameController : ControllerBase
     public ActionResult<Game> GetById(int id)
     {
         var game = _gameDbContext.Games.Find(id);
+        if (game == null)
+        {
+            return NotFound();
+        }
+        return game;
+    }
+
+    [HttpGet("byname/{name}", Name = "GetByName")]
+    public ActionResult<Game> GetByName(string name)
+    {
+        Console.WriteLine(name);
+        var game = _gameDbContext.Games.FirstOrDefault(g => g.Name == name);
         if (game == null)
         {
             return NotFound();

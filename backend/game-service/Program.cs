@@ -8,7 +8,8 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigin", policy =>
     {
-        policy.WithOrigins("https://gameplatfromweb-bxfthmeccbbcavb5.northeurope-01.azurewebsites.net")
+        policy.WithOrigins("https://gameplatfromweb-bxfthmeccbbcavb5.northeurope-01.azurewebsites.net",
+                        "http://localhost:4200")
               .AllowAnyMethod()
               .AllowAnyHeader();
     });
@@ -43,12 +44,6 @@ if (app.Environment.IsProduction())
 }
 
 app.UseRouting();
-// app.Use(async (context, next) =>
-// {
-//     context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
-//     await next.Invoke();
-// });
-
 app.UseCors("AllowSpecificOrigin");
 app.UseAuthorization();
 app.MapControllers();

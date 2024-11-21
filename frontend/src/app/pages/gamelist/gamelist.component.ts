@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { GamecardComponent } from '../../gamecard/gamecard.component';
-import { Game, GameService } from '../../../services/game.service';
+import { GameService } from '../../../services/game.service';
+import { Game } from '../../models/Game';
 import { CommonModule } from '@angular/common';
 import { catchError } from 'rxjs/operators';
 import { of, firstValueFrom } from 'rxjs';
+import { GamecardComponent } from '../../gamecard/gamecard.component';
+
 @Component({
   selector: 'app-gamelist',
   standalone: true,
-  imports: [CommonModule,GamecardComponent],
+  imports: [CommonModule, GamecardComponent],
   templateUrl: './gamelist.component.html',
-  styleUrls: ['./gamelist.component.css']
+  styleUrls: ['./gamelist.component.css'],
 })
 export class GamelistComponent implements OnInit {
   games: Game[] = [];
@@ -21,16 +23,15 @@ export class GamelistComponent implements OnInit {
   }
 
   fetchGames() {
-    this.gameService.fetchGames()
-    .pipe(
-      catchError(error => {
-        this.errorMessage = 'Failed to load games';
-        return of([]);
-      })
-    )
-    .subscribe(games => this.games = games);
-
-    
+    this.gameService
+      .fetchGames()
+      .pipe(
+        catchError((error) => {
+          this.errorMessage = 'Failed to load games';
+          return of([]);
+        })
+      )
+      .subscribe((games) => (this.games = games));
   }
   async AddGame() {
     // Create a new game object
@@ -38,15 +39,17 @@ export class GamelistComponent implements OnInit {
       id: 0,
       name: 'New Game',
       description: 'Description',
-      image: 'https://via.placeholder.com/150'
+      image: 'https://via.placeholder.com/150',
     };
     try {
-      const result = await firstValueFrom(this.gameService.AddGame(game).pipe(
-        catchError(error => {
-          this.errorMessage = 'Failed to add game';
-          return of(null);
-        })
-      ));
+      const result = await firstValueFrom(
+        this.gameService.AddGame(game).pipe(
+          catchError((error) => {
+            this.errorMessage = 'Failed to add game';
+            return of(null);
+          })
+        )
+      );
     } catch (error) {
       this.errorMessage = 'Failed to add game';
     }

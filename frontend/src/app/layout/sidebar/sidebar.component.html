@@ -2,7 +2,8 @@
   <mat-sidenav #sidenav mode="side" [(opened)]="isPanelOpen" class="sidenav">
     <div class="sidebar-content">
       <ul>
-        <mat-icon class="user-icon">person</mat-icon>
+        <app-login-form *ngIf="!this.IsLogged"> </app-login-form>
+        <li *ngIf="this.IsLogged"><a href="https://www.google.com">Profile</a></li>
         <li><a href="https://www.google.com">Activity</a></li>
         <li>Tasks</li>
         <li>Overview</li>

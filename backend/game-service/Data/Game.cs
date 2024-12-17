@@ -1,4 +1,4 @@
-namespace game_service;
+namespace game_service.Data;
 
 public class Game
 {

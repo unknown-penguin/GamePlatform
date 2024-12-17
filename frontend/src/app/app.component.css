@@ -46,16 +46,13 @@ p {
 }
 
 main {
+    height: 100%;
     width: 100%;
     min-height: 100vh;
     display: block;
     padding: 8px;
     box-sizing: border-box;
     position: relative;
-}
-
-.angular-logo {
-    max-width: 9.2rem;
 }
 
 .content {
@@ -160,6 +157,7 @@ main {
 }
 
 .main-content {
+    min-height: 100vh;
     display: flex;
     flex-direction: row;
     gap: 20px;

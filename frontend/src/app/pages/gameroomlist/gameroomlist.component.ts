@@ -60,10 +60,10 @@ export class GameroomlistComponent implements OnInit {
     return url.substring(url.lastIndexOf('/') + 1);
   }
 
-  ReturnToPreviousPage() {
+  protected ReturnToPreviousPage() {
     this.router.navigate([`/games`]);
   }
-  AddNewGameRoom() {
+  protected AddNewGameRoom() {
     this.router.navigate([`/games/${this.selectedGame?.name}/new`]);
   }
   private fetchGameRooms(gameId: number) {

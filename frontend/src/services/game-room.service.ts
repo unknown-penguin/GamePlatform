@@ -18,7 +18,7 @@ export class GameRoomService {
   constructor(private http: HttpClient, private gameService: GameService) {}
 
   public getGamesRooms(gameId: number): Observable<GameRoom[]> {
-    return this.http.get<GameRoom[]>(`${environment.GameRoomApiUrl}/GameRoom/gamerooms/${gameId}`).pipe(
+    return this.http.get<GameRoom[]>(`${environment.GameApiUrl}/GameRoom/gamerooms/${gameId}`).pipe(
       catchError(error => {
         console.error('Error fetching games rooms:', error);
         return of([]);

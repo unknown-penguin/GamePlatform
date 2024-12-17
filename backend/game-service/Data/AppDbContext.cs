@@ -9,6 +9,7 @@ namespace game_service.Data
 
         }
         public DbSet<Game> Games { get; set; }
+        public DbSet<GameRoom> GameRooms { get; set; }
     }
 
 }

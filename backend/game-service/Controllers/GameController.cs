@@ -22,35 +22,19 @@ public class GameController : ControllerBase
     
     [HttpGet(Name = "GetGames")]
     public IEnumerable<Game> Get()
-    {
-        return _gameDbContext.Games.ToList();
-    }
+        => _gameDbContext.Games.ToList();
 
     [HttpGet("{id}",Name = "GetById")]
     public ActionResult<Game> GetById(int id)
-    {
-        var game = _gameDbContext.Games.Find(id);
-        if (game == null)
-        {
-            return NotFound();
-        }
-        return game;
-    }
+        => _gameDbContext.Games.Find(id) is Game game ? game : NotFound();
+
 
     [HttpGet("byname/{name}", Name = "GetByName")]
     public ActionResult<Game> GetByName(string name)
-    {
-        Console.WriteLine(name);
-        var game = _gameDbContext.Games.FirstOrDefault(g => g.Name == name);
-        if (game == null)
-        {
-            return NotFound();
-        }
-        return game;
-    }
+    => _gameDbContext.Games.FirstOrDefault(g => g.Name == name) is Game game ? game : NotFound();
+
 
     [HttpPost]
-    
     public ActionResult<Game> Create(Game game)
     {
         _gameDbContext.Games.Add(game);

@@ -23,10 +23,14 @@ export class GameService {
   public GetGame(gameId: number): Observable<Game>;
   public GetGame(gameIds: string): Observable<Game>;
 
-  public GetGame(game : number | string): Observable<Game> {
-    return this.http.get<Game>(`${environment.GameApiUrl}/game/byname/${game}`).pipe(
+  public GetGame(game: number | string): Observable<Game> {
+    const url = typeof game === 'number' 
+      ? `${environment.GameApiUrl}/game/${game}` 
+      : `${environment.GameApiUrl}/game/byname/${game}`;
+      
+    return this.http.get<Game>(url).pipe(
       catchError(error => {
-        console.error('Error fetching games:', error);
+        console.error('Error fetching game:', error);
         return of(); 
       })
     );

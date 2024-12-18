@@ -3,13 +3,13 @@
     margin: 20px;
     height: 100px;
     width: 200px;
-    border: solid #2A3036;
+    border: solid #1E2B38;
     border-radius: 27px;
     transition: background-color 0.3s ease; 
     opacity: 1; 
 }
 .gamecard-container:hover {
-    background-color: #1B1F23; 
+    background-color: #121C27; 
 }
 .img-container{
     position: relative;

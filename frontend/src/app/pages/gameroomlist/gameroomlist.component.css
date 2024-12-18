@@ -5,8 +5,8 @@
   margin-top: 10px;
   height: 100vh;
   position: relative;
-  background-color: #2A3036;
-  border: solid #2A3036;
+  background-color: #1E2B38;
+  border: solid #1E2B38;
   border-radius: 25px;
   padding: 10px;
   float: left;
@@ -37,7 +37,7 @@
 }
 #search-container mat-icon {
   margin-left: auto;
-  color: #2A3036;
+  color: #1E2B38;
 }
 
 #page-header {
@@ -50,7 +50,7 @@
 #new-game-button-container {
   display: inline-block;
   position: relative;
-  border: solid #2A3036;
+  border: solid #1E2B38;
   border-radius: 25px;
   width: 150px;
   height: 24px;
@@ -79,7 +79,7 @@ ul {
 li {
   padding: 10px;
   margin-bottom: 10px;
-  border: solid #2A3036;
+  border: solid #1E2B38;
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
@@ -99,7 +99,7 @@ li:hover {
 #return-button-container {
   display: inline-block;
   position: relative;
-  border: solid #2A3036;
+  border: solid #1E2B38;
   border-radius: 25px;
   width: 150px;
   height: 24px;
@@ -119,7 +119,7 @@ mat-list-item {
   max-height: 100px;
   padding: 15px;
   margin-bottom: 15px;
-  border: solid #2A3036;
+  border: solid #1E2B38;
   border-radius: 15px;
   display: flex;
   justify-content: space-between;

@@ -26,8 +26,18 @@ builder.Services.AddDbContext<AuthenticationDBContext>(options =>
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme,
         options => builder.Configuration.Bind("JwtSettings", options))
-    .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme,
-        options => builder.Configuration.Bind("CookieSettings", options));
+    .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+{
+    options.Cookie.Name = "YourAppCookie";
+    options.Cookie.HttpOnly = true;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    options.Cookie.SameSite = SameSiteMode.Strict;
+})
+.AddGoogle(options =>
+{
+    options.ClientId = builder.Configuration["GoogleAuthSettings:ClientId"];
+    options.ClientSecret = builder.Configuration["GoogleAuthSettings:ClientSecret"];
+});
 
 builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<AuthenticationDBContext>()
@@ -36,7 +46,7 @@ builder.Services.AddScoped<UserManager<User>>();
 builder.Services.AddScoped<SignInManager<User>>();
 
 builder.Services.AddSingleton<AuthenticationProducerService>();
-builder.Services.AddHostedService<AuthenticationConsumerService>(); 
+builder.Services.AddHostedService<AuthenticationConsumerService>();
 
 builder.Services.AddSingleton<ILogger<Program>, Logger<Program>>();
 
@@ -44,7 +54,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Configure Kestrel to listen on both HTTP and HTTPS
 builder.WebHost.ConfigureKestrel(options =>
 {
     options.ListenAnyIP(5115); // HTTP

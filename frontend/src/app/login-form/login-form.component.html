@@ -18,7 +18,7 @@
       <button type="submit" [disabled]="!loginForm.valid" class="submit-button">
         Login
       </button>
-      <button type="GoogleLogin" class="submit-button">
+      <button (click)="googleLogin()" type="GoogleLogin" class="submit-button">
         Google
       </button>
     </div>

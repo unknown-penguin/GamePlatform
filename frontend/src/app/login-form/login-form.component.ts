@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-login-form',
   standalone: true,
@@ -10,6 +11,7 @@ import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 })
 export class LoginFormComponent {
   errorMessage: string | null = null;
+  constructor(private authService: AuthService) {}
   public loginForm = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
@@ -17,7 +19,15 @@ export class LoginFormComponent {
   onSubmit(): void {
     const { email, password } = this.loginForm.value;
     if (email && password) {
-      console.log('Login form submitted:', email, password);
+      this.authService.login( email, password, true).subscribe({
+        next: response => {
+          this.errorMessage = null; 
+          localStorage.setItem('IsLogged', "true");
+        },
+        error: error => {
+          this.errorMessage = error.message.error.message || 'Registration failed';
+        }
+      });
     }
   }
  
@@ -36,4 +46,6 @@ export class LoginFormComponent {
     const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`;
     window.location.href = googleAuthUrl;
   }
+
+  
 }

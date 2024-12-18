@@ -9,10 +9,13 @@
         </ul>
       </div>
       <div class="user-panel">
-        <app-login-form *ngIf="false"></app-login-form>
-        <ul *ngIf="true">
+        <ul *ngIf="!isLogged">
           <li ><a (click)="Login()">Login</a></li>
           <li><a href="/register">Register</a></li>
+        </ul>
+        <ul *ngIf="isLogged">
+          <li><a href="/profile">Profile</a></li>
+          <li><a (click)="Logout()">Logout</a></li>
         </ul>
       </div>
     </div>
